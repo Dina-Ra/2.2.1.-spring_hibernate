@@ -18,14 +18,24 @@ public class MainApp {
 
       Car car1 = new Car("BMV", 345);
       Car car2 = new Car("Volvo", 745);
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
-      userService.add(new User("User5", "Lastname1", "user1@mail.ru", car1));
-      userService.add(new User("User5", "Lastname1", "user1@mail.ru", car2));
 
-      System.out.println(userService.getUserByCar(car1.getModel(), car1.getSeries()));
+      User user1 = new User("User1", "Lastname1", "user1@mail.ru");
+      User user2 = new User("User2", "Lastname2", "user2@mail.ru");
+      User user3 = new User("User3", "Lastname3", "user3@mail.ru");
+      User user4 = new User("User4", "Lastname4", "user4@mail.ru");
+      User user5 = new User("User5", "Lastname5", "user5@mail.ru", car1);
+      User user6 = new User("User6", "Lastname6", "user6@mail.ru", car2);
+
+      userService.add(user1);
+      userService.add(user2);
+      userService.add(user3);
+      userService.add(user4);
+      userService.add(user5, user5.getCar());
+      userService.add(user6, user6.getCar());
+
+
+
+      System.out.println(userService.getUserByCar("Volvo", 745));
 
       List<User> users = userService.listUsers();
       for (User user : users) {
